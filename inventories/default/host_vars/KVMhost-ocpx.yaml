@@ -1,0 +1,106 @@
+# Section 1 - KVM Host
+networking:
+  mode: #X Type of network type. Required only when creating LPAR cluster
+  internal_ip: #X Internal IP for the LPAR Required only when booting LPAR cluster with HiperSockets.
+  hostname: ORION4A-GCPB-auto1
+  ip: 9.40.77.101
+  ipv6: #X
+  subnetmask: 255.255.255.0
+  ipv6_prefix: #X
+  gateway: 9.40.77.1
+  ipv6_gateway: #X
+  nameserver1: 9.0.0.1
+  nameserver2: 9.0.0.2
+  device1: enc0
+  device2: enc1
+
+storage:
+  pool_path: /var/lib/libvirt/images
+
+##############################################################
+# Variables below this point only need to be filled out if   #
+# env.z.lpar1.create is True or if you are doing a lpar      #
+# based installation. Meaning, if the LPARs you will         #
+# be using as KVM host(s) already exist and have RHEL        #   
+# installed, the variables below are not required. However   #
+# for lpar based installation you must provide below vars    #
+##############################################################
+
+# Section 2 - CPC & HMC
+cpc_name: #X
+hmc:
+  host: #X
+  auth:
+    user: #X
+    pass: #X
+
+# Section 3 - LPAR
+lpar:
+  name: #X
+  description: #X
+  access:
+    user: #X
+    pass: #X
+    root_pass: #X
+
+# Section 4 - IFL & Memory
+  ifl:
+    count: #X
+    initial_memory: #X
+    max_memory: #X
+    initial_weight: #X
+    min_weight: #X
+    max_weight: #X
+
+# Section 5 - Networking
+  networking:
+    subnet_cidr: #X
+    nic:
+    # Enable below card only when network.mode is hipersocket
+    # osa_card:
+    #   dev_num: #X Example: 0.0.1100,0.0.1101,0.0.1102
+      card1:
+        name: #X
+        adapter: #X
+        port: #X
+        dev_num: #X
+#      card2:
+#        name: 
+#        adapter: 
+#        port: 
+#        dev_num: 
+
+# Section 6 - Storage
+  storage_group_1:
+    name: #X
+    type: fcp
+    storage_wwpn:
+      - #X
+      - #X
+      - #X
+      - #X
+    dev_num: #X
+    lun_name: #X
+#  storage_group_2:
+#    auto_config: True
+#    name: 
+#    type: fcp
+#    storage_wwpn:
+#      - 
+#      - 
+#      - 
+#      - 
+#    dev_num: 
+#    lun_name:
+
+# Section 7 -live disk info
+  livedisk:
+    livedisktype: #X 
+    lun: #X
+    wwpn: #X
+    devicenr: #X
+    livediskuuid: #X Required when 'dpm_enabled' is true
+    livedisk_root_pass: #X
+
+# Type of LPAR(dpm or pr/sm), 'True' if dpm. Allowed values ['True', 'False']
+  dpm_enabled: 'False'
