@@ -1,0 +1,257 @@
+# Copy this file to 'all.yaml' in the same folder and add your required values there !
+#
+# For a comprehensive description of each variable, please see documentation here:
+# https://ibm.github.io/Ansible-OpenShift-Provisioning/set-variables-group-vars/
+
+# Section 1 - Ansible Controller
+installation_type: kvm
+controller_sudo_pass: Samolevski1914+
+
+env:
+
+# Section 2 - LPAR(s)
+  z:
+    high_availability: False
+    ip_forward: 1
+    lpar1:
+      create: False
+      hostname: GCPB-auto1
+      ip: 9.40.77.101
+      user: admin
+      pass: redhat
+    lpar2:
+      create: False
+#      hostname:
+#      ip:
+#      user:
+#      pass:
+    lpar3:
+      create: False
+#      hostname:
+#      ip:
+#      user:
+#      pass:
+
+# Section 3 - File Server
+  file_server:
+    ip: 9.40.72.32
+    port: '' # please keep empty string to use default port
+    user: gcpb
+    pass: gcpbauto
+    protocol: ftp
+    iso_mount_dir: home/gcpb/rhel96/s390xqcow2
+    iso_os_variant: rhel9.6
+    cfgs_dir: #X
+
+# Section 4 - Red Hat
+  redhat:
+    username: georgi.kyurkchiyski
+    password: Samolevski1914+
+    manage_subscription: True
+    # Make sure to enclose pull_secret in 'single quotes'
+    pull_secret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfY2IzZjJmYjViM2U0NDBlZmIwNDJjYzAwN2IyNzg1NzA6UERaNk02MjRPMEFYWlNNSU9YNEU0VlpFSzI4NFNHMkZJT0ZUTVowQU5XSEJIWTdZWUwxVEhDOFpFOUxJMzcyWA==","email":"georgi.kyurkchiyski1@ibm.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfY2IzZjJmYjViM2U0NDBlZmIwNDJjYzAwN2IyNzg1NzA6UERaNk02MjRPMEFYWlNNSU9YNEU0VlpFSzI4NFNHMkZJT0ZUTVowQU5XSEJIWTdZWUwxVEhDOFpFOUxJMzcyWA==","email":"georgi.kyurkchiyski1@ibm.com"},"registry.connect.redhat.com":{"auth":"fHVoYy1wb29sLTZkZjViZjA4LTU3YzEtNGU3Zi1iMDFmLTEzYzlhMjE2NjVkOTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTRPV0k0Wmpaa01qYzNPR1EwTWpFd09XWXlNREkyTm1NNE9XVmlaR1ExTWlKOS5ZXzNSYUtzcW5lT3M3d1htamJxcmhxRnRXbC1aaEExRjBhUGxjM1h3dkllcHI3ekpsVUk2ZDZST3hUMFJGYjFzMWY0czlzXzQxeEd6d18tTzVuaUxUcXlHcTJwYWwwbzVQVS1yOENOb21lWTNlZldYLXpBTjhDNjdneXNDeXNER25RblBTV2VOclRGblBkYThBcjJlZ1RqbjdocUpQeWd0NjNJYkx5ZTlNeWV3c21SSnhMV21keENtZ3l5czd4cFk0RHBfWVhjcWtlbngyOHF5LXRIXzJINzhCbUpmb0E4Z1NMaUdkR29GdXVvWnBQTkpBcUVWSzZ5cjFHZTd1VjEyRXVOTUJyVTFHR0l2SldmQUJ6QS1XNGdHMGJwNXJUY2FCSXBKZUpUNmI1VWEyejIzSFVIWWd4TWstUF9rQXozN2ppUFdLN1VXcXRhYzlTTGQ1OUhpbFdpT0lCazFjQTJnc3djMk82amtfNVhtQlk4UzhZRWFLaTBnem85cmNJblc0YkJKYnU4NGhPd3FYUDdNQkxJZWZTd3JSXzhGSmtxbXhiU0RQSEE5dERRZ0JkUmx6aU5NeUZvbGI0Qm1yYTJrdUFlNG1TdWF0T3lBVEE3V3JCVVJDUEZ4YV90YmNkeW4yTXhqMGxIZF96cUxCaUdqMXZsZ1BYeGxyZWNjN2s3U1lIeEpydXhJckdocHJMUzhVQy1qQjdvODlwSk9Sd05sT0dDcU1rWDFPaldPSlNKRnVEQzBQSnZOSGR1QlBWTDJZMjMzV0w4QlJ2LXlZWVlRaWtWR1RKdlJMRGIwaGhPbVdSTUVkWEJPYzBiNEZRbkZKdU04RnpEeUNvdUVuLV9aM0liRnczVGdSbk1jUkg0elV6VzVoaDFjUC1nczRYMzhLVl9zc04yN2V1QQ==","email":"georgi.kyurkchiyski1@ibm.com"},"registry.redhat.io":{"auth":"fHVoYy1wb29sLTZkZjViZjA4LTU3YzEtNGU3Zi1iMDFmLTEzYzlhMjE2NjVkOTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTRPV0k0Wmpaa01qYzNPR1EwTWpFd09XWXlNREkyTm1NNE9XVmlaR1ExTWlKOS5ZXzNSYUtzcW5lT3M3d1htamJxcmhxRnRXbC1aaEExRjBhUGxjM1h3dkllcHI3ekpsVUk2ZDZST3hUMFJGYjFzMWY0czlzXzQxeEd6d18tTzVuaUxUcXlHcTJwYWwwbzVQVS1yOENOb21lWTNlZldYLXpBTjhDNjdneXNDeXNER25RblBTV2VOclRGblBkYThBcjJlZ1RqbjdocUpQeWd0NjNJYkx5ZTlNeWV3c21SSnhMV21keENtZ3l5czd4cFk0RHBfWVhjcWtlbngyOHF5LXRIXzJINzhCbUpmb0E4Z1NMaUdkR29GdXVvWnBQTkpBcUVWSzZ5cjFHZTd1VjEyRXVOTUJyVTFHR0l2SldmQUJ6QS1XNGdHMGJwNXJUY2FCSXBKZUpUNmI1VWEyejIzSFVIWWd4TWstUF9rQXozN2ppUFdLN1VXcXRhYzlTTGQ1OUhpbFdpT0lCazFjQTJnc3djMk82amtfNVhtQlk4UzhZRWFLaTBnem85cmNJblc0YkJKYnU4NGhPd3FYUDdNQkxJZWZTd3JSXzhGSmtxbXhiU0RQSEE5dERRZ0JkUmx6aU5NeUZvbGI0Qm1yYTJrdUFlNG1TdWF0T3lBVEE3V3JCVVJDUEZ4YV90YmNkeW4yTXhqMGxIZF96cUxCaUdqMXZsZ1BYeGxyZWNjN2s3U1lIeEpydXhJckdocHJMUzhVQy1qQjdvODlwSk9Sd05sT0dDcU1rWDFPaldPSlNKRnVEQzBQSnZOSGR1QlBWTDJZMjMzV0w4QlJ2LXlZWVlRaWtWR1RKdlJMRGIwaGhPbVdSTUVkWEJPYzBiNEZRbkZKdU04RnpEeUNvdUVuLV9aM0liRnczVGdSbk1jUkg0elV6VzVoaDFjUC1nczRYMzhLVl9zc04yN2V1QQ==","email":"georgi.kyurkchiyski1@ibm.com"}}}'
+
+# Section 5 - Bastion
+  bastion:
+    create: True
+    vm_name: GCPB-auto1-KVM-bastion
+    resources:
+      disk_size: 100
+      ram: 8192
+      swap: 4096
+      vcpu: 4
+      vcpu_model_option: "--cpu host"
+    networking:
+      ip: 9.40.77.103
+      internal_ip: 10.90.0.1
+      ipv6: #X
+      mac: #X
+      hostname: GCPB-auto1-KVM-bastion
+      base_domain: pok.ibm.com
+      subnetmask: 255.255.255.0
+      gateway: 9.40.77.1
+      ipv6_gateway: #X
+      ipv6_prefix: #X
+      nameserver1: 9.0.0.1
+      nameserver2: 9.0.0.2
+      forwarder: 8.8.8.8
+      interface: enc0
+      interface: enc1
+    access:
+      user: root
+      pass: redhat
+      root_pass: redhat
+    options:
+      dns: True
+      loadbalancer:
+        on_bastion: True
+        public_ip: 9.40.77.103
+        private_ip: 10.90.0.1
+
+# Section 6 - Cluster Networking
+  cluster:
+    networking:
+      metadata_name: gcpb-a1
+      base_domain: pok.ibm.com
+      subnetmask: 255.255.255.0
+      gateway: 9.40.77.1
+      ipv6_gateway: #X
+      ipv6_prefix: #X
+      nameserver1: 9.0.0.1
+      nameserver2: 9.0.0.2
+      forwarder: 8.8.8.8
+      interface: enc0
+      interface: enc1
+
+# Section 7 - Bootstrap Node
+    nodes:
+      bootstrap:
+        disk_size: 120
+        ram: 16384
+        vcpu: 4
+        vcpu_model_option: "--cpu host"
+        vm_name: GCPB-auto1-bootstrap
+        ip: 10.90.0.10
+        ipv6: #X
+        mac: #X
+        hostname: GCPB-auto1-bootstrap
+
+# Section 8 - Control Nodes
+      control:
+        disk_size: 100
+        ram: 8192
+        vcpu: 4
+        vcpu_model_option: "--cpu host"
+        vm_name: GCPB-auto1-KVM-cp1
+      control:
+        disk_size: 100
+        ram: 8192
+        vcpu: 4
+        vcpu_model_option: "--cpu host"
+        vm_name: GCPB-auto1-KVM-cp2
+
+# Section 9 - Compute Nodes
+      compute:
+        disk_size: 100
+        ram: 16384
+        vcpu: 4
+        vcpu_model_option: "--cpu host"
+        vm_name: GCPB-auto1-KVM-wrk1
+      compute:
+        disk_size: 100
+        ram: 16384
+        vcpu: 4
+        vcpu_model_option: "--cpu host"
+        vm_name: GCPB-auto1-KVM-wrk2
+
+# Section 10 - Infra Nodes
+#      infra:
+#        disk_size: 120
+#        ram: 16384
+#        vcpu: 4
+#        vm_name:
+#          - infra-1
+#          - infra-2
+#        ip:
+#          - 1.1.1.1
+#          - 1.1.1.2
+#        ipv6:
+#          - fd00::11
+#          - fd00::12
+#        mac:
+#          - X
+#          - X
+#        hostname:
+#          - infra1
+#          - infra2
+
+#######################################################################################
+# All variables below this point do not need to be changed for a default installation #
+#######################################################################################
+
+# Section 11 - (Optional) Misc
+  language: en_US.UTF-8
+  timezone: America/New_York
+  keyboard: us
+  root_access: false
+  ansible_key_name: ansible-ocpz
+  ocp_ssh_key_comment: OpenShift key
+  vnet_name: macvtap
+  network_mode:
+  use_ipv6: True
+  use_dhcp: False
+  setup_openvpn: False
+
+# Uncomment the line below to enable IPSec network configuration.
+# ipsec_enabled: true
+
+#jumphost if network mode is NAT
+  jumphost:
+    name:
+    ip:
+    user:
+    pass:
+    path_to_keypair:
+
+# Section 12 - OCP and RHCOS (CoreOS)
+# ocp download_url and rhcos download url
+
+  ocp_download_url: "https://mirror.openshift.com/pub/openshift-v4/s390x/dependencies/rhcos/4.18.27/"
+  ocp_client_tgz: "openshift-client-linux.tar.gz"
+  ocp_install_tgz: "openshift-install-linux.tar.gz"
+
+  rhcos_download_url: "https://mirror.openshift.com/pub/openshift-v4/multi/clients/ocp/4.18.27/s390x/"
+  rhcos_os_variant: "rhl9"
+  rhcos_live_kernel: "rhcos-live-kernel.s390x"
+  rhcos_live_initrd: "rhcos-live-initramfs.s390x.img"
+  rhcos_live_rootfs: "rhcos-live-rootfs.s390x.img"
+
+
+# Section 13 - (Optional) Create additional compute node in a day-2 operation
+day2_compute_node:
+  vm_name:
+  vm_hostname:
+  vm_ip:
+  vm_ipv6:
+  vm_mac:
+  vm_interface:
+  hostname:
+  host_user:
+  host_arch:
+
+
+# Section 14 - Agent Based Installer ( Optional )
+abi:
+  flag: true
+  ansible_workdir: "ansible_workdir"
+  ocp_installer_version: "4.18.27"
+  ocp_installer_base_url: "https://mirror.openshift.com/pub/openshift-v4"
+  architecture: "multi;s390x"
+  boot_method: "pxe_iso"
+
+# Openshift Settings  
+# Settings like architecture, hyperthreading, network cidr, etc.
+# This is a hierachical structure having install_config as top level.
+# Check the documentation for parameters and default/example values.
+
+# (Optional) Packages
+# Format to overwrite the packages to be installed is: 
+# pkgs_controller: [ openssh, expect, sshuttle ]
+# Overwrite exists for pkgs_galaxy, pkgs_controller, pkgs_kvm, pkgs_bastion, pkgs_zvm
+
+# (Optional) Proxy
+# Pls check the documentation which vars are present (include examples). If use_proxy is set to true,
+# than proxy_http, proxy_https and proxy_no must be set.
+
+
+# Section 15 - CEX based Luks Encryption ( Optional )
+cex: false
+# cex_device:  [dasd | fcp | virt]
+# The following variable is required only when CEX use as vfio_ap mediate device in KVM guest.
+# https://www.ibm.com/docs/en/linux-on-systems?topic=management-configuring-crypto-express-adapters-kvm-guests
+# cex_uuid_map:
+#   hostname:UUID:domain
+#   hostname:UUID:domain
+# Provide control and compute hostname with uuid and domain only for KVM based installation.
+# UUID can be generated from `uuidgen` command and domain from lszcrypt -V
+# eg upi-control-1:5c84eefb-cb45-4519-86d3-ba23e65e8896:12.0001
